@@ -46,9 +46,6 @@ func main() {
         city := chi.URLParam(r, "city")
         apiKey := os.Getenv("OPENWEATHER_API_KEY")
 
-        // Log the API key for debugging (remove this in production)
-        log.Printf("Using API Key: %s", apiKey)
-
         url := fmt.Sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", city, apiKey)
 
         resp, err := http.Get(url)
