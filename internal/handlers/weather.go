@@ -3,12 +3,13 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"weather-app/pkg/utils"
 
 	"github.com/go-chi/chi"
 )
 
-const apiKey = "197a9a199b3b20586cab551634761e97"
+var apiKey = os.Getenv("OPENWEATHER_API_KEY")
 
 func GetWeather(w http.ResponseWriter, r *http.Request) {
     city := chi.URLParam(r, "city")
