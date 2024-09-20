@@ -7,10 +7,12 @@ import (
 	"github.com/go-chi/cors"
 )
 
+// Server struct holds the router instance
 type Server struct {
     Router *chi.Mux
 }
 
+// NewServer initializes a new server instance
 func NewServer() *Server {
     r := chi.NewRouter()
 
@@ -23,7 +25,9 @@ func NewServer() *Server {
         MaxAge:           300,
     }))
 
+	// Define the route for getting weather info
     r.Get("/weather/{city}", handlers.GetWeather)
 
+	// Return a new server instance
     return &Server{Router: r}
 }
